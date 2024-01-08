@@ -19,6 +19,5 @@ class PropostaContraparte(Base):
     valor_utilizado_conversao = Column(DECIMAL)
 
     cliente = relationship("Cliente", back_populates="propostas_contraparte")
-    proposta = relationship("Proposta", back_populates="propostas_contraparte")
     limites_proposta = relationship("LimitesProposta", back_populates="propostas_contraparte")
     observacoes_proposta = relationship("ObservacoesProposta", back_populates="propostas_contraparte")

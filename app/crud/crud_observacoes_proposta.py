@@ -15,6 +15,13 @@ def get_all_observacoes_proposta(db: Session, id_cliente: int):
     return observacoes_proposta
 
 
+def get_all_observacoes_propostaid_contraparte(db: Session, id_cliente: int, id_contraparte_list: int):
+    observacoes_proposta = db.query(ObservacoesProposta).filter(ObservacoesProposta.id_cliente == id_cliente, ObservacoesProposta.id_contraparte == id_contraparte_list).all()
+    if not observacoes_proposta:
+        return []
+    return observacoes_proposta
+
+
 def create_observacoes_proposta(db: Session, observacoes_proposta_in: ObservacoesPropostaCreate, id_cliente: int, id_contraparte: int):
     db_tipos_rating_cliente = ObservacoesProposta(id_cliente=id_cliente, id_contraparte=id_contraparte, **observacoes_proposta_in.dict())
     db.add(db_tipos_rating_cliente)

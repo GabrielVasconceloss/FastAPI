@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from app.api.endpoints import configuracao_cliente, aprovadores_cliente, tipos_rating_cliente, alcadas_cliente, propostas_contrapartee, limites_proposta, observacoes_proposta
+from app.api.endpoints import configuracao_cliente, aprovadores_cliente, tipos_rating_cliente, alcadas_cliente, propostas_contraparte, limites_proposta, observacoes_proposta
 
 api_router = APIRouter()
 
@@ -28,7 +28,7 @@ api_router.include_router(
 )
 
 api_router.include_router(
-    propostas_contrapartee.router,
+    propostas_contraparte.router,
     prefix="/propostas-contrapartee",
     tags=["propostas_contrapartee"],
 )

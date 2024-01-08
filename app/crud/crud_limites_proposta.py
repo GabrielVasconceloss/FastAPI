@@ -15,6 +15,13 @@ def get_all_limites_proposta(db: Session, id_cliente: int):
         return None
     return limites_proposta
 
+
+def get_all_limites_proposta_id_contraparte(db: Session, id_cliente: int, id_contraparte_list: int):
+    limites_proposta = db.query(LimitesProposta).filter(LimitesProposta.id_cliente == id_cliente, LimitesProposta.id_contraparte == id_contraparte_list).all()
+    if not limites_proposta:
+        return []
+    return limites_proposta
+
 def create_limites_proposta(db: Session, limites_proposta: LimitesPropostaCreate, id_cliente: int, id_contraparte: int):
     db_aprovadores_cliente = LimitesProposta(id_cliente=id_cliente, id_contraparte=id_contraparte,**limites_proposta.dict())
     db.add(db_aprovadores_cliente)

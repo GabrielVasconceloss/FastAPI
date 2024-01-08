@@ -12,3 +12,4 @@ class Cliente(Base):
     alcadas_cliente = relationship("AlcadasCliente", back_populates="cliente")
     propostas_contraparte = relationship("PropostaContraparte", back_populates="cliente")
     limites_proposta = relationship("LimitesProposta", back_populates="cliente")
+    observacoes_proposta = relationship("ObservacoesProposta", back_populates="cliente")
