@@ -171,6 +171,28 @@ def update_propostas_contraparte(
     return propostas_contraparte_updated
 
 
+@router.put("/{id_proposta}/alterar-status", response_model=PropostaContraparte)
+def update_propostas_contraparte_status(
+        id_proposta: int,
+        status: int,
+        db: Session = Depends(deps.get_db),
+) -> Any:
+    """
+    Update the status of PropostaContraparte by id_proposta.
+    """
+    propostas_contraparte_in_db = crud_propostas_contraparte.get_unic_propostas_contraparte(db, id_proposta)
+    if propostas_contraparte_in_db is None:
+        raise HTTPException(status_code=404, detail="PropostaContraparte not found")
+
+    propostas_contraparte_in_db.status = status
+    db.commit()
+    db.refresh(propostas_contraparte_in_db)
+    return propostas_contraparte_in_db
+
+
+
+
+
 @router.delete("/{id_proposta}", response_model=dict)
 def delete_propostas_contraparte(
         id_proposta: int,

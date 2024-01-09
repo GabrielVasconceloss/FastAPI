@@ -24,7 +24,7 @@ def create_propostas_contraparte(db: Session, propostas_contraparte: PropostaCon
 
 
 def get_unic_propostas_contraparte(db: Session, id_proposta: int):
-    return db.query(PropostaContraparte).filter(PropostaContraparte.id == id_proposta).first()
+        return db.query(PropostaContraparte).filter(PropostaContraparte.id == id_proposta).first()
 
 
 def update_propostas_contraparte(db: Session, db_obj: PropostaContraparte, obj_in: dict):
